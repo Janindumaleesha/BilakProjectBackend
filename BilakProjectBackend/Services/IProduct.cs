@@ -7,8 +7,8 @@ namespace BilakProjectBackend.Services
         public List<Product> GetProducts();
         public Product GetProductById(int id);
         public Product CreateProduct(Product product);
-        public Product UpdateProduct(Product product);
-        public Product DeleteProduct(int id);
+        public void UpdateProduct(int id, Product product);
+        public void DeleteProduct(int id);
 
     }
 }

@@ -1,32 +1,51 @@
 ﻿using BilakProjectBackend.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BilakProjectBackend.Services
 {
     public class ProductService : IProduct
     {
+        private readonly BilakDbContext _dbContext = new BilakDbContext();
         public Product CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _dbContext.Products.Add(product);
+            _dbContext.SaveChanges();
+            return product;
         }
 
-        public Product DeleteProduct(int id)
+        public void DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            var product = _dbContext.Products.FirstOrDefault(x => x.Id == id);
+            if (product != null)
+            {
+                _dbContext.Products.Remove(product);
+                _dbContext.SaveChanges();
+            }
         }
 
         public Product GetProductById(int id)
         {
-            throw new NotImplementedException();
+            var product = _dbContext.Products.FirstOrDefault(x => x.Id == id);
+            if (product != null)
+            {
+                return product;
+            }
+            return null;
         }
 
         public List<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            return _dbContext.Products.ToList();
         }
 
-        public Product UpdateProduct(Product product)
+        public void UpdateProduct(int id, Product product)
         {
-            throw new NotImplementedException();
+            var updateProduct = _dbContext.Products.FirstOrDefault(x => x.Id == id);
+            if (updateProduct != null)
+            {
+                _dbContext.Products.Update(updateProduct);
+                _dbContext.SaveChanges();
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace BilakProjectBackend.Services
         public List<Ebill> GetEbills();
         public Ebill GetEbillById(int id);
         public Ebill CreateEbill(Ebill ebill);
-        public Ebill UpdateEbill(Ebill ebill);
-        public Ebill DeleteEbill(int id);
+        public void UpdateEbill(int id, Ebill ebill);
+        public void DeleteEbill(int id);
     }
 }

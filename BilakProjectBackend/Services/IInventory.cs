@@ -7,7 +7,7 @@ namespace BilakProjectBackend.Services
         public List<Inventory> GetInventorys();
         public Inventory GetInventoryById(int id);
         public Inventory CreateInventory(Inventory inventory);
-        public Inventory UpdateInventory(Inventory inventory);
-        public Inventory DeleteInventory(int id);
+        public void UpdateInventory(int id, Inventory inventory);
+        public void DeleteInventory(int id);
     }
 }
